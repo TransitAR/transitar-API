@@ -1,0 +1,40 @@
+@media (min-width: 468px) {
+  .main-container {
+    display: flex;
+    align-items: flex-start; /* for avoiding automatic height*/
+    flex-direction: row;
+  }
+}
+
+.heading-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.actions-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+.container-3-box {
+  flex-basis: 12%;
+}
+
+.option-description {
+  text-align: center;
+}
