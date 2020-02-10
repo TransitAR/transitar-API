@@ -26,7 +26,34 @@ function success(pos) {
     center: [crd.longitude, crd.latitude]
   });
 
-  function loadMap() {
+
+  // Fetch hosts from API
+  async function getHosts() {
+    const res = await fetch('/api/v1/hosts');
+    const data = await res.json();
+
+    const hosts = data.data.map(host => {
+      return {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [
+            host.location.coordinates[0],
+            host.location.coordinates[1]
+          ]
+        },
+        properties: {
+          host: host.hostId,
+          icon: 'host'
+        }
+      };
+    });
+
+    loadMap(hosts);
+  }
+
+  // Load map with hosts
+  function loadMap(hosts) {
     map.on('load', function () {
       map.loadImage(
         'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png',
@@ -42,34 +69,39 @@ function success(pos) {
                   'type': 'Feature',
                   'geometry': {
                     'type': 'Point',
-                    'coordinates': [crd.longitude, crd.latitude]
-                  },
-                  properties: {
-                    hostId: '0001',
-                    icon: 'host'
+                    'coordinates': [0, 0]
                   }
                 }
               ]
             }
           });
-          map.addLayer({
-            'id': 'points',
-            'type': 'symbol',
-            'source': 'point',
-            'layout': {
-              'icon-image': 'cat',
-              'icon-size': 1.25,
-              'text-field': '{hostId}',
-              'text': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-              'text-offset': [0, 0.9],
-              'text-anchor': 'top'
-            }
-          });
         }
       );
+      map.addLayer({
+        id: 'points',
+        type: 'symbol',
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: hosts
+          }
+        },
+        layout: {
+          'icon-image': 'cat',
+          'icon-size': 0.09,
+          'text-field': '{ hostId }',
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          'text-offset': [0, 0.9],
+          'text-anchor': 'top'
+        }
+      });
     });
   }
+
+  getHosts();
 }
+
 
 function error(err) {
   console.warn("ERROR(" + err.code + "): " + err.message);
