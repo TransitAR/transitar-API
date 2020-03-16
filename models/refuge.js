@@ -3,24 +3,11 @@ const geocoder = require("../utils/geocoder");
 
 /*
 Zona
-Nombre
-Puede dar tránsito 
-  Tiene mascotas / Cuantas
-  Experiencia
-  Casa / Departamento
-  Personas que viven ahí
-  Horarios en que está en el domicilio PENSANDO
-Puede adoptar
-  Tiene mascotas / Cuantas
-  Experiencia
-  Casa / Departamento
-  Personas que viven ahí
-  Horarios en que está en el domicilio
-Puede viajar
-  Zona
-  Días
-  Horarios
-  Tiene caniles propios
+Integrantes
+Especialización
+Cuenta para donaciones
+Animales en adopción o tránsito
+
 */
 
 const HostSchema = new mongoose.Schema({
@@ -35,22 +22,10 @@ const HostSchema = new mongoose.Schema({
     type: String,
     require: [true, "Please add a name"]
   },
-  experience: {
-    type: Boolean
+  specialization: {
+    type: [String]
   },
-  pets: {
-    type: Number
-  },
-  persons: {
-    type: Number
-  },
-  type: {
-    type: String
-  },
-  mobility: {
-    type: Boolean
-  },
-  mobilitySchedule: {
+  schedule: {
     mon: {
       open: {
         type: number
@@ -59,9 +34,6 @@ const HostSchema = new mongoose.Schema({
         type: number
       }
     },
-  },
-  hasTransportBox: {
-    type: Boolean
   },
   address: {
     type: String,

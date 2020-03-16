@@ -56,10 +56,11 @@ function success(pos) {
   function loadMap(hosts) {
     map.on('load', function () {
       map.loadImage(
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png',
+        //'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Home_Icon.svg/1200px-Home_Icon.svg.png',
         function (error, image) {
           if (error) throw error;
-          map.addImage('cat', image);
+          map.addImage('home', image);
           map.addSource('point', {
             'type': 'geojson',
             'data': {
@@ -88,7 +89,7 @@ function success(pos) {
           }
         },
         layout: {
-          'icon-image': 'cat',
+          'icon-image': 'home',
           'icon-size': 0.09,
           'text-field': '{ hostId }',
           'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
