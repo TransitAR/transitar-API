@@ -1,16 +1,16 @@
-const Host = require("../models/host");
+const Vet = require("../models/host");
 
-// @desc GET all the hosts
-// @route GET /api/v1/hosts
+// @desc GET all the vets
+// @route GET /api/v1/vets
 // @access Public
-exports.getHosts = async (req, res, next) => {
+exports.getVets = async (req, res, next) => {
   try {
-    const hosts = await Host.find();
+    const vets = await Vet.find();
 
     return res.status(200).json({
       success: true,
-      count: hosts.length,
-      data: hosts
+      count: vets.length,
+      data: vets
     });
   } catch (error) {
     console.error(error);
@@ -18,21 +18,21 @@ exports.getHosts = async (req, res, next) => {
   }
 };
 
-// @desc Create a host
-// @route POST /api/v1/hosts
+// @desc Create a vet
+// @route POST /api/v1/vets
 // @access Public
-exports.addHost = async (req, res, next) => {
+exports.addVet = async (req, res, next) => {
   try {
-    const host = await Host.create(req.body);
+    const vet = await Vet.create(req.body);
 
     return res.status(200).json({
       success: true,
-      data: host
+      data: vet
     });
   } catch (error) {
     console.error(error);
     if (error.code === 11000) {
-      return res.status(400).json({ error: "This host already exists" });
+      return res.status(400).json({ error: "This vet already exists" });
     }
     res.status(500).json({ error: "server error" });
   }
