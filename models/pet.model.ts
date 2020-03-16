@@ -57,7 +57,7 @@ const PetSchema: Schema = new Schema({
     location: {
         type: {
             type: String,
-            emun: ["Point"]
+            enum: ["Point"]
         },
         coordinates: {
             type: [Number],
