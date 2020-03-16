@@ -18,7 +18,7 @@ export class VetsController {
   }
 
   static async getVet(req: NowRequest, res: NowResponse) {
-    const { id: vetId } = req.query;
+    const vetId = +req.query.id;
     try {
       const [vet] = await Vet.find({ vetId });
       if (vet) {

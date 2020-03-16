@@ -18,7 +18,7 @@ export class RefugesController {
   }
 
   static async getRefuge(req: NowRequest, res: NowResponse) {
-    const { id: refugeId } = req.query;
+    const refugeId = +req.query.id;
     try {
       const [refuge] = await Refuge.find({ refugeId });
       if (refuge) {
