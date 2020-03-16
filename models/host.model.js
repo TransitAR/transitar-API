@@ -73,11 +73,11 @@ const HostSchema = new mongoose.Schema({
 
 // Geocode & create location
 HostSchema.pre("save", async function(next) {
-  const loc = await geocoder.geocode(this.address);
+  const [loc] = await geocoder.geocode(this.address);
   this.location = {
     type: "Point",
-    coordinates: [loc[0].longitude, loc[0].latitude],
-    formattedAddress: loc[0].formattedAddress
+    coordinates: [loc.longitude, loc.latitude],
+    formattedAddress: loc.formattedAddress
   };
 
   // Do not save address

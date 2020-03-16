@@ -12,13 +12,12 @@ export class HostsController {
         data: hosts
       });
     } catch (error) {
-      console.log({ error });
       res.status(Status.Error).send({ error: error.message });
     }
   }
 
   static async getHost(req: NowRequest, res: NowResponse) {
-    const { id: hostId } = req.query;
+    const hostId = req.query.id;
     try {
       const [host] = await Host.find({ hostId });
       if (host) {
