@@ -1,1 +1,23 @@
-{"projectId":"Qmdv3f53RBCxkLhFjixYYnqWUKZdCSAyTgtAhBropXhGhq","orgId":"team_GPKqABpAgS5RlrersSx0uFiO"}
+{
+  "version": 2,
+  "name": "transitar-api",
+  "alias": "transitar-api.now.sh",
+  "projectId":"Qmdv3f53RBCxkLhFjixYYnqWUKZdCSAyTgtAhBropXhGhq",
+  "orgId":"team_GPKqABpAgS5RlrersSx0uFiO",
+  "builds": [{
+      "src": "server.js",
+      "use": "@now/node-server"
+  }],
+  "routes": [{
+      "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+      },
+      "src": "/.*",
+      "dest": "/server.js"
+  }],
+  "env": {
+      "VERSION": "@version"
+  }
+}
