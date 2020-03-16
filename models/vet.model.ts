@@ -59,4 +59,4 @@ VetSchema.pre<IVet>("save", async function (next) {
     next();
 });
 
-export default model<IVet>('Pet', VetSchema);
+export default model<IVet>('Vet', VetSchema);

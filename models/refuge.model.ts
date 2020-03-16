@@ -59,4 +59,4 @@ RefugeSchema.pre<IRefuge>("save", async function (next) {
     next();
 });
 
-export default model<IRefuge>('Pet', RefugeSchema);
+export default model<IRefuge>('Refuge', RefugeSchema);

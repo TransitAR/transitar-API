@@ -12,7 +12,6 @@ export class VetsController {
         data: vets
       });
     } catch (error) {
-      console.log({ error });
       res.status(Status.Error).send({ error: error.message });
     }
   }
@@ -42,6 +41,7 @@ export class VetsController {
         data: vet
       });
     } catch (error) {
+      console.log(error);
       if (error.code === 11000) {
         res
           .status(Status.BadRequest)
