@@ -3,7 +3,7 @@ const Host = require("../models/host");
 // @desc GET all the hosts
 // @route GET /api/v1/hosts
 // @access Public
-exports.getHosts = async (req, res, next) => {
+exports.getHosts = async (req, res) => {
   try {
     const hosts = await Host.find();
 
@@ -21,7 +21,7 @@ exports.getHosts = async (req, res, next) => {
 // @desc Create a host
 // @route POST /api/v1/hosts
 // @access Public
-exports.addHost = async (req, res, next) => {
+exports.addHost = async (req, res) => {
   try {
     const host = await Host.create(req.body);
 
