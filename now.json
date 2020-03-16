@@ -3,5 +3,16 @@
   "env": {
     "MONGO_URI": "@mongo_uri",
     "GEOCODER_API_KEY": "@geocoder_api_key"
-  }
+  },
+  "headers": [
+    {
+      "source": "/api/*",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
 }
