@@ -17,7 +17,7 @@ export class HostsController {
   }
 
   static async getHost(req: NowRequest, res: NowResponse) {
-    const hostId = req.query.id;
+    const hostId = +req.query.id;
     try {
       const [host] = await Host.find({ hostId });
       if (host) {

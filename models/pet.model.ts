@@ -1,29 +1,11 @@
-const mongoose = require("mongoose");
-const geocoder = require("../utils/geocoder");
+import { model, Schema } from 'mongoose';
+import { IPet } from './interfaces/pet.interface';
+const { geocoder } = require("../utils/geocoder");
 
-/*
-Zona
-Foto
-Nombre
-Tipo
-Años
-Peso
-Tamaño
-Personalidad
-Enfermedades
-Esterilizado
-Vacunas
-Viaje disponible
-Tipo de comida
-*/
-
-const PetSchema = new mongoose.Schema({
+const PetSchema: Schema = new Schema({
     petId: {
         type: String,
-        required: [true, "Please add a pet ID"],
         unique: true,
-        trim: true,
-        maxlength: [10, "Pet ID must be less than 10 characters"]
     },
     image: {
         type: String
@@ -61,10 +43,10 @@ const PetSchema = new mongoose.Schema({
     mobilitySchedule: {
         mon: {
             open: {
-                type: number
+                type: Number
             },
             close: {
-                type: number
+                type: Number
             }
         },
     },
@@ -90,12 +72,12 @@ const PetSchema = new mongoose.Schema({
 });
 
 // Geocode & create location
-PetSchema.pre("save", async function (next) {
-    const loc = await geocoder.geocode(this.address);
+PetSchema.pre<IPet>("save", async function (next) {
+    const [loc] = await geocoder.geocode(this.address);
     this.location = {
         type: "Point",
-        coordinates: [loc[0].longitude, loc[0].latitude],
-        formattedAddress: loc[0].formattedAddress
+        coordinates: [loc.longitude, loc.latitude],
+        formattedAddress: loc.formattedAddress
     };
 
     // Do not save address
@@ -103,4 +85,4 @@ PetSchema.pre("save", async function (next) {
     next();
 });
 
-module.exports = mongoose.model("Pet", PetSchema);
+export default model<IPet>('Pet', PetSchema);
