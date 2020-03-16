@@ -10,13 +10,13 @@ Animales en adopción o tránsito
 
 */
 
-const HostSchema = new mongoose.Schema({
-  hostId: {
+const RefugeSchema = new mongoose.Schema({
+  refugeId: {
     type: String,
-    required: [true, "Please add a host ID"],
+    required: [true, "Please add a refuge ID"],
     unique: true,
     trim: true,
-    maxlength: [10, "Host ID must be less than 10 characters"]
+    maxlength: [10, "Refuge ID must be less than 10 characters"]
   },
   name: {
     type: String,
@@ -57,7 +57,7 @@ const HostSchema = new mongoose.Schema({
 });
 
 // Geocode & create location
-HostSchema.pre("save", async function (next) {
+RefugeSchema.pre("save", async function (next) {
   const loc = await geocoder.geocode(this.address);
   this.location = {
     type: "Point",
@@ -70,4 +70,4 @@ HostSchema.pre("save", async function (next) {
   next();
 });
 
-module.exports = mongoose.model("Host", HostSchema);
+module.exports = mongoose.model("Refuge", RefugeSchema);
