@@ -9,7 +9,7 @@ const RefugeSchema: Schema = new Schema({
     },
     name: {
         type: String,
-        require: [true, "Please add a name"]
+        required: [true, "Please add a name"]
     },
     specialization: {
         type: [String]
@@ -26,7 +26,7 @@ const RefugeSchema: Schema = new Schema({
     },
     address: {
         type: String,
-        require: [true, "Please add an address"]
+        required: [true, "Please add an address"]
     },
     location: {
         type: {

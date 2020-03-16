@@ -12,23 +12,23 @@ const PetSchema: Schema = new Schema({
     },
     name: {
         type: String,
-        require: [true, "Please add a name"]
+        required: [true, "Please add a name"]
     },
     type: {
         type: String,
-        require: [true, "Please add a type"]
+        required: [true, "Please add a type"]
     },
     age: {
         type: Number,
-        require: [true, "Please add an aproximated age"]
+        required: [true, "Please add an aproximated age"]
     },
     weight: {
         type: Number,
-        require: [true, "Please add an aproximated weight"]
+        required: [true, "Please add an aproximated weight"]
     },
     size: {
         type: String,
-        require: [true, "Please add a size"]
+        required: [true, "Please add a size"]
     },
     traits: [String],
     conditions: [String],
@@ -52,7 +52,7 @@ const PetSchema: Schema = new Schema({
     },
     address: {
         type: String,
-        require: [true, "Please add an address"]
+        required: [true, "Please add an address"]
     },
     location: {
         type: {
