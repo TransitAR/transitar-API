@@ -53,10 +53,10 @@ const HostSchema = new mongoose.Schema({
   mobilitySchedule: {
     mon: {
       open: {
-        type: number
+        type: Number
       },
       close: {
-        type: number
+        type: Number
       }
     },
   },
