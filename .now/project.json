@@ -1,10 +1,4 @@
 {
-  "version": 2,
-  "name": "transitar-api",
-  "alias": "transitar-api.now.sh",
   "projectId": "Qmdv3f53RBCxkLhFjixYYnqWUKZdCSAyTgtAhBropXhGhq",
-  "orgId": "team_GPKqABpAgS5RlrersSx0uFiO",
-  "env": {
-    "VERSION": "@version"
-  }
+  "orgId": "team_GPKqABpAgS5RlrersSx0uFiO"
 }
