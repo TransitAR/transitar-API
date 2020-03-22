@@ -19,7 +19,7 @@ export class HostsController {
   static async getHost(req: NowRequest, res: NowResponse) {
     const hostId = +req.query.id;
     try {
-      const [host] = await Host.find({ hostId });
+      const host = await Host.findById({ hostId });
       if (host) {
         res.status(Status.Ok).json({
           success: true,

@@ -20,7 +20,7 @@ export class PetsController {
   static async getPet(req: NowRequest, res: NowResponse) {
     const petId = +req.query.id;
     try {
-      const [pet] = await Pet.find({ petId });
+      const pet = await Pet.findById({ petId });
       if (pet) {
         res.status(Status.Ok).json({
           success: true,

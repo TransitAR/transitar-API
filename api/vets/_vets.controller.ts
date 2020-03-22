@@ -19,7 +19,7 @@ export class VetsController {
   static async getVet(req: NowRequest, res: NowResponse) {
     const vetId = +req.query.id;
     try {
-      const [vet] = await Vet.find({ vetId });
+      const vet = await Vet.findById({ vetId });
       if (vet) {
         res.status(Status.Ok).json({
           success: true,

@@ -20,7 +20,7 @@ export class RefugesController {
   static async getRefuge(req: NowRequest, res: NowResponse) {
     const refugeId = +req.query.id;
     try {
-      const [refuge] = await Refuge.find({ refugeId });
+      const refuge = await Refuge.findById({ refugeId });
       if (refuge) {
         res.status(Status.Ok).json({
           success: true,
