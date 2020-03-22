@@ -3,7 +3,6 @@ import { IMobilitySchedule } from './mobilitySchedule.interface';
 import { ILocation } from './location.interface';
 
 export interface IPet extends Document {
-    petId: number,
     image: string,
     name: string,
     type: string,

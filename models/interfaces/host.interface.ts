@@ -3,7 +3,6 @@ import { IMobilitySchedule } from './mobilitySchedule.interface';
 import { ILocation } from './location.interface';
 
 export interface IHost extends Document {
-    hostId: number,
     name: string,
     experience?: boolean,
     pets: number,

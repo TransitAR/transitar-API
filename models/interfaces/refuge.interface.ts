@@ -4,7 +4,6 @@ import { IDaySchedule } from './daySchedule.interface';
 import { ILocation } from './location.interface';
 
 export interface IRefuge extends Document {
-    refugeId: number,
     name: string,
     specialization: [String],
     schedule: IDaySchedule,
