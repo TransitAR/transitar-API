@@ -3,10 +3,6 @@ import { IPet } from './interfaces/pet.interface';
 const { geocoder } = require("../utils/geocoder");
 
 const PetSchema: Schema = new Schema({
-    petId: {
-        type: String,
-        unique: true,
-    },
     image: {
         type: String
     },

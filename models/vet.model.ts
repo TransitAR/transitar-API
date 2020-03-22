@@ -3,10 +3,6 @@ import { IVet } from './interfaces/vet.interface';
 const { geocoder } = require("../utils/geocoder");
 
 const VetSchema: Schema = new Schema({
-    vetId: {
-        type: String,
-        unique: true,
-    },
     name: {
         type: String,
         required: [true, "Please add a name"]

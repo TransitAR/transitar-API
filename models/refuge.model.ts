@@ -3,10 +3,6 @@ import { IRefuge } from './interfaces/refuge.interface';
 const { geocoder } = require("../utils/geocoder");
 
 const RefugeSchema: Schema = new Schema({
-    refugeId: {
-        type: String,
-        unique: true,
-    },
     name: {
         type: String,
         required: [true, "Please add a name"]

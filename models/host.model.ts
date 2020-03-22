@@ -3,11 +3,6 @@ import { IHost } from './interfaces/host.interface';
 const { geocoder } = require("../utils/geocoder");
 
 const HostSchema: Schema = new Schema({
-    // Host id lo podria manejar mongo con el _id
-    hostId: {
-        type: String,
-        unique: true,
-    },
     name: {
         type: String,
         required: [true, "Please add a name"]
