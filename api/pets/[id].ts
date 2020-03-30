@@ -6,9 +6,11 @@ import { connectDB } from "../../setup/connect.db";
 export default async function PetsApi(req: NowRequest, res: NowResponse) {
   await connectDB();
   if (req.method === Methods.Get) {
-    PetsController.getPets(req, res);
-  } else if (req.method === Methods.Post) {
-    PetsController.addPet(req, res);
+    if (req.query.id) {
+      PetsController.getPet(req, res);
+    } else {
+      res.status(Status.BadRequest).send("Bad request");
+    }
   } else {
     res.status(Status.BadRequest).send("Bad request");
   }
