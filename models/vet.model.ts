@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IVet } from "./interfaces/vet.interface";
-const { Pet } = require("./pet.model");
-const { geocoder } = require("../utils/geocoder");
+import { geocoder } from "../utils/geocoder";
 
 const VetSchema: Schema = new Schema({
   name: {
@@ -37,7 +36,8 @@ const VetSchema: Schema = new Schema({
     formattedAddress: String
   },
   pets: {
-    type: [Pet.ObjectId]
+    // TODO: Averiguar como hacer para que esto sea ObjectId de Pet model
+    type: [String]
   },
   createdAt: {
     type: Date,
