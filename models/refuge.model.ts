@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
 import { IRefuge } from "./interfaces/refuge.interface";
-const { Pet } = require("./pet.model");
 const { geocoder } = require("../utils/geocoder");
 
 const RefugeSchema: Schema = new Schema({

@@ -51,21 +51,4 @@ export class VetsController {
       }
     }
   }
-
-  static async addVetPet(req: NowRequest, res: NowResponse) {
-    const vetId = +req.query.id;
-    try {
-      const vet = await Vet.findById({ vetId });
-      if (vet) {
-        res.status(Status.Ok).json({
-          success: true,
-          data: vet
-        });
-      } else {
-        res.status(Status.NotFound).send({ error: `Vet ${vetId} not found` });
-      }
-    } catch (error) {
-      res.status(Status.Error).send({ error: error.message });
-    }
-  }
 }
