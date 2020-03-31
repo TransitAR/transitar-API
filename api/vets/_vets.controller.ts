@@ -1,7 +1,6 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { Status } from "../../utils/api.utils";
 import Vet from "../../models/vet.model";
-import Pet from "../../models/pet.model";
 
 export class VetsController {
   static async getVets(req: NowRequest, res: NowResponse) {
@@ -58,8 +57,6 @@ export class VetsController {
     try {
       const vet = await Vet.findById({ vetId });
       if (vet) {
-        const pet = await Pet.create(req.body);
-        vet.pets.push(pet);
         res.status(Status.Ok).json({
           success: true,
           data: vet
