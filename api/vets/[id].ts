@@ -3,12 +3,14 @@ import { Methods, Status } from "../../utils/api.utils";
 import { VetsController } from "./_vets.controller";
 import { connectDB } from "../../setup/connect.db";
 
-export default async function VetsApi(req: NowRequest, res: NowResponse) {
+export default async function VetApi(req: NowRequest, res: NowResponse) {
   await connectDB();
   if (req.method === Methods.Get) {
-    VetsController.getVets(req, res);
-  } else if (req.method === Methods.Post) {
-    VetsController.addVet(req, res);
+    if (req.query.id) {
+      VetsController.getVet(req, res);
+    } else {
+      res.status(Status.BadRequest).send("Bad request");
+    }
   } else {
     res.status(Status.BadRequest).send("Bad request");
   }
