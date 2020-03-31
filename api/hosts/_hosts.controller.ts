@@ -11,6 +11,7 @@ export class HostsController {
         count: hosts.length,
         data: hosts
       });
+      console.log("hi!", hosts);
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
     }
