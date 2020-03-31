@@ -2,7 +2,6 @@ import { Document } from "mongoose";
 import { IMobilitySchedule } from "./mobilitySchedule.interface";
 import { IDaySchedule } from "./daySchedule.interface";
 import { ILocation } from "./location.interface";
-import { IPet } from "./pet.interface";
 
 export interface IRefuge extends Document {
   name: string;
@@ -12,6 +11,6 @@ export interface IRefuge extends Document {
   mobilitySchedule: IMobilitySchedule;
   address: string;
   location: ILocation;
-  pets: [IPet];
+  pets: [string];
   createdAt: Date;
 }

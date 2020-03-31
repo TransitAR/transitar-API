@@ -37,7 +37,7 @@ const RefugeSchema: Schema = new Schema({
     formattedAddress: String
   },
   pets: {
-    type: Pet
+    type: [String]
   },
   createdAt: {
     type: Date,

@@ -1,7 +1,6 @@
 import { Document } from "mongoose";
 import { IMobilitySchedule } from "./mobilitySchedule.interface";
 import { ILocation } from "./location.interface";
-import { IPet } from "./pet.interface";
 
 export interface IHost extends Document {
   name: string;
@@ -13,6 +12,6 @@ export interface IHost extends Document {
   hasTransportBox: boolean;
   address: string;
   location: ILocation;
-  pets: [IPet];
+  pets: [string];
   createdAt: Date;
 }
