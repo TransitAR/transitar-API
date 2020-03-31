@@ -37,7 +37,7 @@ const VetSchema: Schema = new Schema({
     formattedAddress: String
   },
   pets: {
-    type: [Pet]
+    type: [Pet.ObjectId]
   },
   createdAt: {
     type: Date,
