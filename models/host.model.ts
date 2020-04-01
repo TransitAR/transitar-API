@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
 import { IHost } from "./interfaces/host.interface";
-const { Pet } = require("./pet.model");
 const { geocoder } = require("../utils/geocoder");
 
 const HostSchema: Schema = new Schema({
@@ -35,7 +34,7 @@ const HostSchema: Schema = new Schema({
     }
   },
   pets: {
-    type: Pet
+    type: [String]
   },
   createdAt: {
     type: Date,

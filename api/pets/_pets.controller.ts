@@ -12,7 +12,6 @@ export class PetsController {
         data: pets
       });
     } catch (error) {
-      console.log({ error });
       res.status(Status.Error).send({ error: error.message });
     }
   }

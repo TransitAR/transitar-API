@@ -12,7 +12,6 @@ export class RefugesController {
         data: refuges
       });
     } catch (error) {
-      console.log({ error });
       res.status(Status.Error).send({ error: error.message });
     }
   }
@@ -27,7 +26,9 @@ export class RefugesController {
           data: refuge
         });
       } else {
-        res.status(Status.NotFound).send({ error: `Refuge ${refugeId} not found` });
+        res
+          .status(Status.NotFound)
+          .send({ error: `Refuge ${refugeId} not found` });
       }
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
