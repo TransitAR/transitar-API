@@ -1,4 +1,4 @@
 export interface IDaySchedule {
-    open: number,
-    close: number
+  open: number;
+  close: number;
 }

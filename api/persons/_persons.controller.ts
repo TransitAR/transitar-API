@@ -1,50 +1,52 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { Status } from "../../utils/api.utils";
-import Host from "../../models/host.model";
+import Person from "../../models/person.model";
 
-export class HostsController {
-  static async getHosts(req: NowRequest, res: NowResponse) {
+export class PersonsController {
+  static async getPersons(req: NowRequest, res: NowResponse) {
     try {
-      const hosts = await Host.find();
+      const persons = await Person.find();
       res.status(Status.Ok).json({
         success: true,
-        count: hosts.length,
-        data: hosts
+        count: persons.length,
+        data: persons
       });
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
     }
   }
 
-  static async getHost(req: NowRequest, res: NowResponse) {
-    const hostId = +req.query.id;
+  static async getPerson(req: NowRequest, res: NowResponse) {
+    const personId = +req.query.id;
     try {
-      const host = await Host.findById({ hostId });
-      if (host) {
+      const person = await Person.findById({ personId });
+      if (person) {
         res.status(Status.Ok).json({
           success: true,
-          data: host
+          data: person
         });
       } else {
-        res.status(Status.NotFound).send({ error: `Host ${hostId} not found` });
+        res
+          .status(Status.NotFound)
+          .send({ error: `Person ${personId} not found` });
       }
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
     }
   }
 
-  static async addHost(req: NowRequest, res: NowResponse) {
+  static async addPerson(req: NowRequest, res: NowResponse) {
     try {
-      const host = await Host.create(req.body);
+      const person = await Person.create(req.body);
       res.status(Status.Ok).json({
         success: true,
-        data: host
+        data: person
       });
     } catch (error) {
       if (error.code === 11000) {
         res
           .status(Status.BadRequest)
-          .json({ error: "This host already exists" });
+          .json({ error: "This person already exists" });
       } else {
         res.status(Status.Error).send({ error: error.message });
       }

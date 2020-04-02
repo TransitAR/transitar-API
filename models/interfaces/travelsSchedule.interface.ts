@@ -1,6 +1,6 @@
 import { IDaySchedule } from "./daySchedule.interface";
 
-export interface IMobilitySchedule {
+export interface ITravelsSchedule {
   mon: IDaySchedule;
   tue: IDaySchedule;
   we: IDaySchedule;

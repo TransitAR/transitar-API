@@ -1,20 +1,47 @@
 import { model, Schema } from "mongoose";
-import { IHost } from "./interfaces/host.interface";
+import { IPerson } from "./interfaces/person.interface";
 const { geocoder } = require("../utils/geocoder");
 
-const HostSchema: Schema = new Schema({
+const PersonSchema: Schema = new Schema({
   name: {
     type: String,
     required: [true, "Please add a name"]
   },
+  canTravel: Boolean,
+  canAdopt: Boolean,
+  canTransit: Boolean,
+  alerts: Boolean,
   experience: Boolean,
   persons: Number,
-  type: String,
   mobility: Boolean,
   mobilitySchedule: {
     mon: {
-      open: Number,
-      close: Number
+      from: Number,
+      to: Number
+    },
+    tue: {
+      from: Number,
+      to: Number
+    },
+    wed: {
+      from: Number,
+      to: Number
+    },
+    thu: {
+      from: Number,
+      to: Number
+    },
+    fri: {
+      from: Number,
+      to: Number
+    },
+    sat: {
+      from: Number,
+      to: Number
+    },
+    sun: {
+      from: Number,
+      to: Number
     }
   },
   hasTransportBox: Boolean,
@@ -43,7 +70,7 @@ const HostSchema: Schema = new Schema({
 });
 
 // Geocode & create location
-HostSchema.pre<IHost>("save", async function(next) {
+PersonSchema.pre<IPerson>("save", async function(next) {
   const [loc] = await geocoder.geocode(this.address);
   this.location = {
     type: "Point",
@@ -56,4 +83,4 @@ HostSchema.pre<IHost>("save", async function(next) {
   next();
 });
 
-export default model<IHost>("Host", HostSchema);
+export default model<IPerson>("Person", PersonSchema);

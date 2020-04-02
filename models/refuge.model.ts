@@ -12,12 +12,32 @@ const RefugeSchema: Schema = new Schema({
   },
   schedule: {
     mon: {
-      open: {
-        type: Number
-      },
-      close: {
-        type: Number
-      }
+      from: Number,
+      to: Number
+    },
+    tue: {
+      from: Number,
+      to: Number
+    },
+    wed: {
+      from: Number,
+      to: Number
+    },
+    thu: {
+      from: Number,
+      to: Number
+    },
+    fri: {
+      from: Number,
+      to: Number
+    },
+    sat: {
+      from: Number,
+      to: Number
+    },
+    sun: {
+      from: Number,
+      to: Number
     }
   },
   address: {

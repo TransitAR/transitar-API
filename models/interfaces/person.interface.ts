@@ -1,13 +1,18 @@
 import { Document } from "mongoose";
 import { IMobilitySchedule } from "./mobilitySchedule.interface";
+import { ITravelsSchedule } from "./travelsSchedule.interface";
 import { ILocation } from "./location.interface";
 
-export interface IHost extends Document {
+export interface IPerson extends Document {
   name: string;
-  experience?: boolean;
+  canTravel: boolean;
+  canAdopt: boolean;
+  canTransit: boolean;
+  alerts: boolean;
+  experience: boolean;
   persons: number;
-  type: string;
   mobility: boolean;
+  travelsSchedule: ITravelsSchedule;
   mobilitySchedule: IMobilitySchedule;
   hasTransportBox: boolean;
   address: string;
