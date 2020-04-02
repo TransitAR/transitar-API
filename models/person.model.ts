@@ -12,7 +12,7 @@ const PersonSchema: Schema = new Schema({
   canTransit: Boolean,
   alerts: Boolean,
   experience: Boolean,
-  persons: Number,
+  people: Number,
   mobility: Boolean,
   mobilitySchedule: {
     mon: {
