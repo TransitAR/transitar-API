@@ -10,7 +10,7 @@ export interface IPerson extends Document {
   canTransit: boolean;
   alerts: boolean;
   experience: boolean;
-  people: number;
+  persons: number;
   mobility: boolean;
   travelsSchedule: ITravelsSchedule;
   mobilitySchedule: IMobilitySchedule;

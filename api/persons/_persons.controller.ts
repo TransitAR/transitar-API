@@ -2,14 +2,14 @@ import { NowRequest, NowResponse } from "@now/node";
 import { Status } from "../../utils/api.utils";
 import Person from "../../models/person.model";
 
-export class PeopleController {
-  static async getPeople(req: NowRequest, res: NowResponse) {
+export class PersonsController {
+  static async getPersons(req: NowRequest, res: NowResponse) {
     try {
-      const people = await Person.find();
+      const persons = await Person.find();
       res.status(Status.Ok).json({
         success: true,
-        count: people.length,
-        data: people
+        count: persons.length,
+        data: persons
       });
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
