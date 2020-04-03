@@ -8,6 +8,7 @@ export interface IPerson extends Document {
   canTravel: boolean;
   canAdopt: boolean;
   canTransit: boolean;
+  canHelp: boolean;
   alerts: boolean;
   experience: boolean;
   persons: number;

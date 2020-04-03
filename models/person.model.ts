@@ -10,6 +10,7 @@ const PersonSchema: Schema = new Schema({
   canTravel: Boolean,
   canAdopt: Boolean,
   canTransit: Boolean,
+  canHelp: Boolean,
   alerts: Boolean,
   experience: Boolean,
   persons: Number,
