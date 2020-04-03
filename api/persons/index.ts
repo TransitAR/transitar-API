@@ -1,6 +1,6 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { Methods, Status } from "../../utils/api.utils";
-import { PersonsController } from "./_Persons.controller";
+import { PersonsController } from "../persons/_persons.controller";
 import { connectDB } from "../../setup/connect.db";
 
 export default async function PersonsApi(req: NowRequest, res: NowResponse) {
