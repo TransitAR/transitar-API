@@ -1,6 +1,7 @@
 export enum Methods {
   Get = "GET",
-  Post = "POST"
+  Post = "POST",
+  Put = "PUT",
 }
 
 export enum Status {
@@ -9,5 +10,5 @@ export enum Status {
   NotFound = 404,
   BadRequest = 400,
   Error = 500,
-  Unauthorized = 403
+  Unauthorized = 403,
 }
