@@ -11,4 +11,13 @@ export interface IUser extends Document {
   // phoneNumberVerified: boolean;
   // user_metadata: object;
   // app_metadata: object;
+
+  // Refuge
+  refugeInfo?: {};
+
+  // Vet
+  vetInfo?: {};
+
+  // Person
+  personInfo?: {};
 }
