@@ -4,6 +4,7 @@ import User from "../../models/user.model";
 
 // https://auth0.com/docs/quickstart/spa/vuejs/02-calling-an-api#create-an-api
 export class UsersController {
+  // https://manage.auth0.com/dashboard/us/refugiar/hooks
   static async addUser(req: NowRequest, res: NowResponse) {
     try {
       await User.create(req.body.user);
