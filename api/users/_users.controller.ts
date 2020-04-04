@@ -2,6 +2,7 @@ import { NowRequest, NowResponse } from "@now/node";
 import { Status } from "../../utils/api.utils";
 import User from "../../models/user.model";
 
+// https://auth0.com/docs/quickstart/spa/vuejs/02-calling-an-api#create-an-api
 export class UsersController {
   static async addUser(req: NowRequest, res: NowResponse) {
     try {
@@ -12,6 +13,7 @@ export class UsersController {
     }
   }
 
+  // https://mongoosejs.com/docs/tutorials/findoneandupdate.html
   static async patchUser(req: NowRequest, res: NowResponse) {
     try {
       const { id, ...dataToUpdate } = req.body;

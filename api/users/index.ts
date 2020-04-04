@@ -1,5 +1,6 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { Methods, Status } from "../../utils/api.utils";
+import { authValidateMiddleware } from "../../utils/auth0.middleware";
 import { connectDB } from "../../setup/connect.db";
 import { UsersController } from "./_users.controller";
 
@@ -14,6 +15,7 @@ export default async function VetsApi(req: NowRequest, res: NowResponse) {
       res.status(Status.BadRequest).send("User information is required");
     }
   } else if (req.method === Methods.Patch) {
+    await authValidateMiddleware(req, res);
     if (req.body.id) {
       UsersController.patchUser(req, res);
     } else {

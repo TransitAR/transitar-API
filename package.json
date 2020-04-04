@@ -4,11 +4,14 @@
   "author": "Julieta Flux & Guillermo Maiolo",
   "license": "ISC",
   "dependencies": {
+    "express-jwt": "^5.3.1",
+    "jwks-rsa": "^1.7.0",
     "mongoose": "^5.8.11",
     "node-geocoder": "^3.25.0"
   },
   "devDependencies": {
     "@now/node": "^1.4.1",
+    "@types/express-jwt": "0.0.42",
     "@types/mongoose": "^5.7.6",
     "@types/node-geocoder": "^3.24.1"
   }
