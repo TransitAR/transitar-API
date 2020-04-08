@@ -11,7 +11,12 @@ export interface IPerson extends Document {
   canHelp: boolean;
   alerts: boolean;
   experience: boolean;
-  persons: number;
+  adults: number;
+  children: number;
+  otherPets: number;
+  houseType: string;
+  houseProtection: boolean;
+  hourAway: number;
   mobility: boolean;
   travelsSchedule: ITravelsSchedule;
   mobilitySchedule: IMobilitySchedule;

@@ -9,7 +9,7 @@ export class PersonsController {
       res.status(Status.Ok).json({
         success: true,
         count: persons.length,
-        data: persons
+        data: persons,
       });
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
@@ -23,7 +23,7 @@ export class PersonsController {
       if (person) {
         res.status(Status.Ok).json({
           success: true,
-          data: person
+          data: person,
         });
       } else {
         res
@@ -40,7 +40,7 @@ export class PersonsController {
       const person = await Person.create(req.body);
       res.status(Status.Ok).json({
         success: true,
-        data: person
+        data: person,
       });
     } catch (error) {
       if (error.code === 11000) {
