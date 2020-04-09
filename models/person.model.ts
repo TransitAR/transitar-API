@@ -7,6 +7,7 @@ const PersonSchema: Schema = new Schema({
     type: String,
     required: [true, "Please add a name"],
   },
+  birthDate: { type: Date, required: [true, "Please add a birth date"] },
   canTravel: Boolean,
   canAdopt: Boolean,
   canTransit: Boolean,

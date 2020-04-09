@@ -5,6 +5,7 @@ import { ILocation } from "./location.interface";
 
 export interface IPerson extends Document {
   name: string;
+  birthDate: Date;
   canTravel: boolean;
   canAdopt: boolean;
   canTransit: boolean;
