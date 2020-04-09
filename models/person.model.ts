@@ -22,7 +22,7 @@ const PersonSchema: Schema = new Schema({
     type: Boolean,
     required: [true, "Please add protection info"],
   },
-  hourAway: {
+  hoursAway: {
     type: Number,
     required: [true, "Please add the total hours you are away from home"],
   },
