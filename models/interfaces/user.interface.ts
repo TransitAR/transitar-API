@@ -12,12 +12,8 @@ export interface IUser extends Document {
   // user_metadata: object;
   // app_metadata: object;
 
-  phones: [
-    {
-      number: number;
-      type: "mobile" | "landline";
-    }
-  ];
+  mobilePhone: number;
+  landlinePhone: number;
 
   // Refuge
   isRefuge: boolean;

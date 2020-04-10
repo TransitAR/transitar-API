@@ -19,12 +19,8 @@ const UserSchema: Schema = new Schema({
   // user_metadata: object,
   // app_metadata: object,
 
-  phones: [
-    {
-      number: Number,
-      type: String,
-    },
-  ],
+  mobilePhone: Number,
+  landlinePhone: Number,
 });
 
 export default model<IUser>("User", UserSchema);
