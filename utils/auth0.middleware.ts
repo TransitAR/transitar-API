@@ -3,7 +3,7 @@ import jwksRsa from "jwks-rsa";
 
 enum AuthConfig {
   Domain = "refugiar.auth0.com",
-  Audience = "https://refugiar-api.now.sh",
+  Audience = "https://refugiar-api.now.sh", // TODO: encontrar manera de cambiarlo
 }
 
 // Define middleware that validates incoming bearer tokens

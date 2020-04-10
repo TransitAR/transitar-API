@@ -18,6 +18,13 @@ const UserSchema: Schema = new Schema({
   // phoneNumberVerified: Boolean,
   // user_metadata: object,
   // app_metadata: object,
+
+  phones: [
+    {
+      number: Number,
+      type: String,
+    },
+  ],
 });
 
 export default model<IUser>("User", UserSchema);
