@@ -18,11 +18,11 @@ export class UsersController {
 
   // https://mongoosejs.com/docs/tutorials/findoneandupdate.html
   static async patchUser(req: NowAuth0Request, res: NowResponse) {
-    const { sub: userId } = req.user;
+    const { sub } = req.user;
     try {
       // evitar update de id & email
       const { id, email, ...dataToUpdate } = req.body;
-      console.log({ id: userId }, dataToUpdate);
+      const [, userId] = sub.split("|"); // TODO: hacer esto bonito
       await User.findOneAndUpdate({ id: userId }, dataToUpdate);
       res.status(Status.NoContent).end();
     } catch (error) {
