@@ -3,6 +3,7 @@ export enum Methods {
   Post = "POST",
   Put = "PUT",
   Patch = "PATCH",
+  Options = "OPTIONS",
 }
 
 export enum Status {
