@@ -6,6 +6,17 @@ import { NowAuth0Request } from "./_interfaces";
 // https://auth0.com/docs/quickstart/spa/vuejs/02-calling-an-api#create-an-api
 
 export class UsersController {
+  static async getUser(req: NowAuth0Request, res: NowResponse) {
+    const { sub } = req.user;
+    try {
+      const userId = getUserId(sub);
+      const user = await User.findOne({ id: userId });
+      res.status(Status.Ok).send(user);
+    } catch (error) {
+      res.status(Status.Error).send({ error: error.message });
+    }
+  }
+
   // https://manage.auth0.com/dashboard/us/refugiar/hooks
   static async addUser(req: NowRequest, res: NowResponse) {
     try {
@@ -22,11 +33,16 @@ export class UsersController {
     try {
       // evitar update de id & email
       const { id, email, ...dataToUpdate } = req.body;
-      const [, userId] = sub.split("|"); // TODO: hacer esto bonito
+      const userId = getUserId(sub);
       await User.findOneAndUpdate({ id: userId }, dataToUpdate);
       res.status(Status.NoContent).end();
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
     }
   }
+}
+
+function getUserId(sub) {
+  const [, userId] = sub.split("|"); // TODO: hacer esto bonito
+  return userId;
 }

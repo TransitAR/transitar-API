@@ -10,6 +10,13 @@ async function UsersApi(req: NowAuth0Request, res: NowResponse) {
   await connectDB();
   if (req.method === Methods.Options) {
     res.status(Status.Ok).end();
+  } else if (req.method === Methods.Get) {
+    await authValidateMiddleware(req, res);
+    if (req.user && req.user.sub) {
+      UsersController.getUser(req, res);
+    } else {
+      res.status(Status.BadRequest).send("Invalid user");
+    }
   } else if (req.method === Methods.Post) {
     // TODO: agregar validacion con una key privada para
     // asegurarnos que la reuqest es especifica de Auth0
