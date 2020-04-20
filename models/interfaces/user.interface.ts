@@ -1,29 +1,74 @@
 import { Document } from "mongoose";
 
 export interface IUser extends Document {
-  // Auth0
   id: string;
-  // tenant: string; // "refugiar",
-  // username: string; // "user1",
-  email: string; // "user1@foo.com",
-  emailVerified: boolean;
-  // phoneNumber: string;
-  // phoneNumberVerified: boolean;
-  // user_metadata: object;
-  // app_metadata: object;
+  email: string; // "user1@foo.com";
 
+  createdAt: Date;
+  completedRegistration: boolean;
+
+  // Common info (for all users)
+  name: string;
+  lastName: string;
+  dob: string;
   mobilePhone: number;
   landlinePhone: number;
+  instagram: string;
+  twitter: string;
+  facebook: string;
+  alerts: boolean;
+  address: string;
+  location: {
+    formattedAddress: string;
+    coordinates: [number];
+  };
 
   // Refuge
   isRefuge: boolean;
-  refugeInfo?: {};
+  refugeInfo: {
+    displayName: string;
+    specialization: [string];
+    pets: [string];
+    showInMap: boolean;
+  };
 
   // Vet
   isVet: boolean;
-  vetInfo?: {};
+  vetInfo: {
+    displayName: string;
+    specialization: [string];
+    showInMap: boolean;
+  };
 
   // Person
   isPerson: boolean;
-  personInfo?: {};
+  personInfo: {
+    // Second step
+    canTravel: boolean;
+    canAdopt: boolean;
+    canTransit: boolean;
+    canHelp: boolean;
+
+    // Third step
+    houseType: string;
+    hoursAway: string;
+    houseProtection: boolean;
+    hasAdults: boolean;
+    adults: number;
+    hasChildren: boolean;
+    children: number;
+    hasPets: boolean;
+    otherPets: number;
+    experience: boolean;
+    hasTransportBox: boolean;
+    availability: {
+      mon: boolean;
+      tue: boolean;
+      wed: boolean;
+      thu: boolean;
+      fri: boolean;
+      sat: boolean;
+      sun: boolean;
+    };
+  };
 }
