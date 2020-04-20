@@ -8,7 +8,7 @@ export interface IUser extends Document {
   completedRegistration: boolean;
 
   // Common info (for all users)
-  userType: string;
+  userType: "adoptant" | "volunteer" | "refuge" | "vet";
   name: string;
   lastName: string;
   dob: string;
