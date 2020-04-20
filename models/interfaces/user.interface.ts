@@ -8,6 +8,7 @@ export interface IUser extends Document {
   completedRegistration: boolean;
 
   // Common info (for all users)
+  userType: string;
   name: string;
   lastName: string;
   dob: string;
@@ -24,7 +25,7 @@ export interface IUser extends Document {
   };
 
   // Refuge
-  isRefuge: boolean;
+  // isRefuge: boolean;
   refugeInfo: {
     displayName: string;
     specialization: [string];
@@ -33,7 +34,7 @@ export interface IUser extends Document {
   };
 
   // Vet
-  isVet: boolean;
+  // isVet: boolean;
   vetInfo: {
     displayName: string;
     specialization: [string];
@@ -41,7 +42,7 @@ export interface IUser extends Document {
   };
 
   // Person
-  isPerson: boolean;
+  // isPerson: boolean;
   personInfo: {
     // Second step
     canTravel: boolean;

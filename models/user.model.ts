@@ -21,6 +21,7 @@ const UserSchema: Schema = new Schema({
   },
 
   // Common info (for all users)
+  userType: String;
   name: String,
   lastName: String,
   dob: String,
@@ -40,7 +41,7 @@ const UserSchema: Schema = new Schema({
   },
 
   // Refuge
-  isRefuge: Boolean,
+  // isRefuge: Boolean,
   refugeInfo: {
     displayName: String,
     specialization: [String],
@@ -52,7 +53,7 @@ const UserSchema: Schema = new Schema({
   },
 
   // Vet
-  isVet: Boolean,
+  // isVet: Boolean,
   vetInfo: {
     displayName: String,
     specialization: [String],
@@ -63,7 +64,7 @@ const UserSchema: Schema = new Schema({
   },
 
   // Person
-  isPerson: Boolean,
+  // isPerson: Boolean,
   personInfo: {
     // Second step
     canTravel: Boolean,
