@@ -21,7 +21,7 @@ const UserSchema: Schema = new Schema({
   },
 
   // Common info (for all users)
-  userType: String;
+  userType: String,
   name: String,
   lastName: String,
   dob: String,
