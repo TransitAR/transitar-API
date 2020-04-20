@@ -34,8 +34,10 @@ export class UsersController {
       // evitar update de id & email
       const { id, email, ...dataToUpdate } = req.body;
       const userId = getUserId(sub);
-      await User.findOneAndUpdate({ id: userId }, dataToUpdate);
-      res.status(Status.NoContent).end();
+      const user = await User.findOneAndUpdate({ id: userId }, dataToUpdate, {
+        new: true, // para retornar el user actualizado
+      });
+      res.status(Status.Ok).send(user);
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
     }
