@@ -13,5 +13,6 @@ export enum Status {
   NotFound = 404,
   BadRequest = 400,
   Error = 500,
-  Unauthorized = 403,
+  Unauthorized = 401,
+  Forbidden = 403,
 }

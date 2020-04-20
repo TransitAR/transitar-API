@@ -27,6 +27,6 @@ export const authValidateMiddleware = async (req, res) => {
       checkJwt(req, res, (err) => (err ? reject(err) : resolve()))
     );
   } catch (error) {
-    res.status(error.status).send(`${error.name}: ${error.message}`);
+    throw new Error(`${error.name}: ${error.message}`);
   }
 };

@@ -11,7 +11,12 @@ async function UsersApi(req: NowAuth0Request, res: NowResponse) {
   if (req.method === Methods.Options) {
     res.status(Status.Ok).end();
   } else if (req.method === Methods.Get) {
-    await authValidateMiddleware(req, res);
+    try {
+      await authValidateMiddleware(req, res);
+    } catch (err) {
+      res.status(Status.Unauthorized).send(err.message);
+      return;
+    }
     if (req.user && req.user.sub) {
       UsersController.getUser(req, res);
     } else {
@@ -19,14 +24,19 @@ async function UsersApi(req: NowAuth0Request, res: NowResponse) {
     }
   } else if (req.method === Methods.Post) {
     // TODO: agregar validacion con una key privada para
-    // asegurarnos que la reuqest es especifica de Auth0
+    // asegurarnos que la request es especifica de Auth0
     if (req.body.user) {
       UsersController.addUser(req, res);
     } else {
       res.status(Status.BadRequest).send("User information is required");
     }
   } else if (req.method === Methods.Patch) {
-    await authValidateMiddleware(req, res);
+    try {
+      await authValidateMiddleware(req, res);
+    } catch (err) {
+      res.status(Status.Unauthorized).send(err.message);
+      return;
+    }
     if (req.user && req.user.sub) {
       UsersController.patchUser(req, res);
     } else {
