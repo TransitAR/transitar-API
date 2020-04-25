@@ -20,8 +20,9 @@ export interface IUser extends Document {
   alerts: boolean;
   address: string;
   location: {
+    type: string;
     formattedAddress: string;
-    coordinates: [number];
+    coordinates: [number, number];
   };
 
   // Refuge
