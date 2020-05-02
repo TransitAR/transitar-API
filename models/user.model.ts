@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IUser } from "./interfaces/user.interface";
+import { geocoder } from "../utils/geocoder";
 
 const UserSchema: Schema = new Schema({
   id: {
@@ -25,7 +26,10 @@ const UserSchema: Schema = new Schema({
   },
 
   // Common info (for all users)
-  userType: String,
+  userType: {
+    type: String,
+    enum: ["adoptant", "volunteer", "refuge", "vet"],
+  },
   name: String,
   lastName: String,
   dob: String,
@@ -37,9 +41,10 @@ const UserSchema: Schema = new Schema({
   alerts: Boolean,
   address: String,
   location: {
+    type: String,
     formattedAddress: String,
     coordinates: {
-      type: [Number],
+      type: [Number, Number],
       index: "2dsphere",
     },
   },
