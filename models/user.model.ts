@@ -12,10 +12,6 @@ const UserSchema: Schema = new Schema({
     type: String,
     required: true,
   },
-  nickname: {
-    type: String,
-    required: true,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -30,6 +26,7 @@ const UserSchema: Schema = new Schema({
     type: String,
     enum: ["adoptant", "volunteer", "refuge", "vet"],
   },
+  nickname: String,
   name: String,
   lastName: String,
   dob: String,
