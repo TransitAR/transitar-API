@@ -38,7 +38,6 @@ const UserSchema: Schema = new Schema({
   alerts: Boolean,
   address: String,
   location: {
-    type: String,
     formattedAddress: String,
     coordinates: {
       type: [Number, Number],

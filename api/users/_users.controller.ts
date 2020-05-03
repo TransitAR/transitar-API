@@ -2,6 +2,7 @@ import { NowRequest, NowResponse } from "@now/node";
 import { Status } from "../../utils/api.utils";
 import User from "../../models/user.model";
 import { NowAuth0Request } from "./_interfaces";
+import { geocoder } from "../../utils/geocoder";
 
 // https://auth0.com/docs/quickstart/spa/vuejs/02-calling-an-api#create-an-api
 
@@ -34,11 +35,19 @@ export class UsersController {
       // evitar update de id & email
       const { id, email, ...dataToUpdate } = req.body;
       const userId = getUserId(sub);
+      if (dataToUpdate.address) {
+        const [loc] = await geocoder.geocode(dataToUpdate.address);
+        dataToUpdate.location = {
+          coordinates: [loc.longitude, loc.latitude],
+          formattedAddress: loc.formattedAddress,
+        };
+      }
       const user = await User.findOneAndUpdate({ id: userId }, dataToUpdate, {
         new: true, // para retornar el user actualizado
       });
       res.status(Status.Ok).send(user);
     } catch (error) {
+      console.log(error);
       res.status(Status.Error).send({ error: error.message });
     }
   }
