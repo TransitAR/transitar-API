@@ -1,10 +1,16 @@
+// https://auth0.com/docs/quickstart/spa/vuejs/02-calling-an-api#create-an-api
 import { NowRequest, NowResponse } from "@now/node";
 import { Status } from "../../utils/api.utils";
 import User from "../../models/user.model";
 import { NowAuth0Request } from "./_interfaces";
 import { geocoder } from "../../utils/geocoder";
 
-// https://auth0.com/docs/quickstart/spa/vuejs/02-calling-an-api#create-an-api
+enum UserTypes {
+  refuge = "refuge",
+  vet = "vet",
+  volunteer = "volunteer",
+  adoptant = "adoptant",
+}
 
 export class UsersController {
   static async getUser(req: NowAuth0Request, res: NowResponse) {
@@ -35,6 +41,8 @@ export class UsersController {
       // evitar update de id & email
       const { id, email, ...dataToUpdate } = req.body;
       const userId = getUserId(sub);
+
+      // location
       if (dataToUpdate.address) {
         const [loc] = await geocoder.geocode(dataToUpdate.address);
         dataToUpdate.location = {
@@ -42,6 +50,23 @@ export class UsersController {
           formattedAddress: loc.formattedAddress,
         };
       }
+
+      // borrar info de otros types
+      if (dataToUpdate.userType === UserTypes.refuge) {
+        dataToUpdate.personInfo = null;
+        dataToUpdate.vetInfo = null;
+      } else if (dataToUpdate.userType === UserTypes.vet) {
+        dataToUpdate.personInfo = null;
+        dataToUpdate.refugeInfo = null;
+      } else if (
+        dataToUpdate.userType === UserTypes.adoptant ||
+        dataToUpdate.userType === UserTypes.volunteer
+      ) {
+        dataToUpdate.vetInfo = null;
+        dataToUpdate.refugeInfo = null;
+      }
+
+      // update
       const user = await User.findOneAndUpdate({ id: userId }, dataToUpdate, {
         new: true, // para retornar el user actualizado
       });
