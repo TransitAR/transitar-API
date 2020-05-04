@@ -7,8 +7,6 @@ export default async function PersonsApi(req: NowRequest, res: NowResponse) {
   await connectDB();
   if (req.method === Methods.Get) {
     PersonsController.getPersons(req, res);
-  } else if (req.method === Methods.Post) {
-    PersonsController.addPerson(req, res);
   } else {
     res.status(Status.BadRequest).send("Bad request");
   }

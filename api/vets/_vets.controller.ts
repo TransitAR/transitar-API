@@ -1,53 +1,22 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { Status } from "../../utils/api.utils";
-import Vet from "../../models/vet.model";
+import User from "../../models/user.model";
 
 export class VetsController {
-  static async getVets(req: NowRequest, res: NowResponse) {
+  static async getVets(_req: NowRequest, res: NowResponse) {
     try {
-      const vets = await Vet.find();
+      // capaz agregar otra collection manual de veterinarias que no son usarios
+      const vets = await User.find({
+        userType: "vet",
+        showOnMap: true,
+      });
       res.status(Status.Ok).json({
         success: true,
         count: vets.length,
-        data: vets
+        data: vets,
       });
     } catch (error) {
       res.status(Status.Error).send({ error: error.message });
-    }
-  }
-
-  static async getVet(req: NowRequest, res: NowResponse) {
-    const vetId = +req.query.id;
-    try {
-      const vet = await Vet.findById({ vetId });
-      if (vet) {
-        res.status(Status.Ok).json({
-          success: true,
-          data: vet
-        });
-      } else {
-        res.status(Status.NotFound).send({ error: `Vet ${vetId} not found` });
-      }
-    } catch (error) {
-      res.status(Status.Error).send({ error: error.message });
-    }
-  }
-
-  static async addVet(req: NowRequest, res: NowResponse) {
-    try {
-      const vet = await Vet.create(req.body);
-      res.status(Status.Ok).json({
-        success: true,
-        data: vet
-      });
-    } catch (error) {
-      if (error.code === 11000) {
-        res
-          .status(Status.BadRequest)
-          .json({ error: "This vet already exists" });
-      } else {
-        res.status(Status.Error).send({ error: error.message });
-      }
     }
   }
 }

@@ -7,8 +7,6 @@ export default async function RefugesApi(req: NowRequest, res: NowResponse) {
   await connectDB();
   if (req.method === Methods.Get) {
     RefugesController.getRefuges(req, res);
-  } else if (req.method === Methods.Post) {
-    RefugesController.addRefuge(req, res);
   } else {
     res.status(Status.BadRequest).send("Bad request");
   }

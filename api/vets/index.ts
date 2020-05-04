@@ -7,8 +7,6 @@ export default async function VetsApi(req: NowRequest, res: NowResponse) {
   await connectDB();
   if (req.method === Methods.Get) {
     VetsController.getVets(req, res);
-  } else if (req.method === Methods.Post) {
-    VetsController.addVet(req, res);
   } else {
     res.status(Status.BadRequest).send("Bad request");
   }
