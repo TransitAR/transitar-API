@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IUser } from "./interfaces/user.interface";
-import { geocoder } from "../utils/geocoder";
+// import { geocoder } from "../utils/geocoder";
 
 const UserSchema: Schema = new Schema({
   id: {
@@ -32,9 +32,6 @@ const UserSchema: Schema = new Schema({
   dob: String,
   mobilePhone: Number,
   landlinePhone: Number,
-  instagram: String,
-  twitter: String,
-  facebook: String,
   alerts: Boolean,
   address: String,
   location: {
@@ -55,6 +52,9 @@ const UserSchema: Schema = new Schema({
       type: Boolean,
       default: true,
     },
+    instagram: String,
+    twitter: String,
+    facebook: String,
   },
 
   // Vet
@@ -66,6 +66,9 @@ const UserSchema: Schema = new Schema({
       type: Boolean,
       default: true,
     },
+    instagram: String,
+    twitter: String,
+    facebook: String,
   },
 
   // Person
@@ -89,6 +92,9 @@ const UserSchema: Schema = new Schema({
     otherPets: Number,
     experience: Boolean,
     hasTransportBox: Boolean,
+    instagram: String,
+    twitter: String,
+    facebook: String,
     availability: {
       mon: Boolean,
       tue: Boolean,

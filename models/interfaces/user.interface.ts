@@ -15,9 +15,6 @@ export interface IUser extends Document {
   dob: string;
   mobilePhone: number;
   landlinePhone: number;
-  instagram: string;
-  twitter: string;
-  facebook: string;
   alerts: boolean;
   address: string;
   location: {
@@ -32,6 +29,9 @@ export interface IUser extends Document {
     specialization: [string];
     pets: [string];
     showInMap: boolean;
+    instagram: string;
+    twitter: string;
+    facebook: string;
   };
 
   // Vet
@@ -40,6 +40,9 @@ export interface IUser extends Document {
     displayName: string;
     specialization: [string];
     showInMap: boolean;
+    instagram: string;
+    twitter: string;
+    facebook: string;
   };
 
   // Person
@@ -63,6 +66,9 @@ export interface IUser extends Document {
     otherPets: number;
     experience: boolean;
     hasTransportBox: boolean;
+    instagram: string;
+    twitter: string;
+    facebook: string;
     availability: {
       mon: boolean;
       tue: boolean;
