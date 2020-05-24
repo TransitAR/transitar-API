@@ -26,7 +26,7 @@ export class RefugesController {
       const refuge = await User.findOne().or([
         // { _id: identifier },
         { id: identifier },
-        { "refugeInfo.displayName": new RegExp(escapeRegex(identifier), "i") },
+        { "refugeInfo.username": new RegExp(escapeRegex(identifier), "i") },
       ]);
       if (refuge) {
         res.status(Status.Ok).json(refuge);
