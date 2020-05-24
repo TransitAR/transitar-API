@@ -115,7 +115,6 @@ const PetSchema: Schema = new Schema({
 PetSchema.pre<IPet>("save", async function (next) {
   const [loc] = await geocoder.geocode(this.address);
   this.location = {
-    type: "Point",
     coordinates: [loc.longitude, loc.latitude],
     formattedAddress: loc.formattedAddress,
   };
