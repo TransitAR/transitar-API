@@ -25,6 +25,7 @@ export interface IUser extends Document {
   // Refuge
   // isRefuge: boolean;
   refugeInfo: {
+    username: string;
     displayName: string;
     specialization: [string];
     pets: [string];
@@ -37,6 +38,7 @@ export interface IUser extends Document {
   // Vet
   // isVet: boolean;
   vetInfo: {
+    username: string;
     displayName: string;
     specialization: [string];
     showInMap: boolean;
