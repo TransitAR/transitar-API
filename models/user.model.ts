@@ -50,10 +50,7 @@ const UserSchema: Schema = new Schema({
     displayName: String,
     specialization: [String],
     pets: [String],
-    showInMap: {
-      type: Boolean,
-      default: true,
-    },
+    showInMap: Boolean,
     instagram: String,
     twitter: String,
     facebook: String,
@@ -64,10 +61,7 @@ const UserSchema: Schema = new Schema({
   vetInfo: {
     displayName: String,
     specialization: [String],
-    showInMap: {
-      type: Boolean,
-      default: true,
-    },
+    showInMap: Boolean,
     instagram: String,
     twitter: String,
     facebook: String,
