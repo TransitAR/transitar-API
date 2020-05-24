@@ -7,10 +7,12 @@ const UserSchema: Schema = new Schema({
     // this is the Auth0 ID which we'll use to relate both DBs
     type: String,
     required: true,
+    unique: true,
   },
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   createdAt: {
     type: Date,

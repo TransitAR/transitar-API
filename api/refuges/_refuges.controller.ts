@@ -19,4 +19,23 @@ export class RefugesController {
       res.status(Status.Error).send({ error: error.message });
     }
   }
+
+  static async getRefuge(req: NowRequest, res: NowResponse) {
+    const { identifier } = req.query;
+    try {
+      const refuge = await User.findOne().or([
+        { _id: identifier },
+        { "refugeInfo.displayName": identifier },
+      ]);
+      if (refuge) {
+        res.status(Status.Ok).json(refuge);
+      } else {
+        res
+          .status(Status.NotFound)
+          .send({ error: `Refuge ${identifier} not found` });
+      }
+    } catch (error) {
+      res.status(Status.Error).send({ error: error.message });
+    }
+  }
 }
