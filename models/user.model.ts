@@ -47,10 +47,7 @@ const UserSchema: Schema = new Schema({
   // Refuge
   // isRefuge: Boolean,
   refugeInfo: {
-    displayName: {
-      type: String,
-      unique: true,
-    },
+    displayName: String,
     specialization: [String],
     pets: [String],
     showInMap: {
@@ -65,10 +62,7 @@ const UserSchema: Schema = new Schema({
   // Vet
   // isVet: Boolean,
   vetInfo: {
-    displayName: {
-      type: String,
-      unique: true,
-    },
+    displayName: String,
     specialization: [String],
     showInMap: {
       type: Boolean,
