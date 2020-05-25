@@ -55,6 +55,25 @@ const UserSchema: Schema = new Schema({
     instagram: String,
     twitter: String,
     facebook: String,
+    donations: {
+      mercadopago: [
+        {
+          link: String,
+          amount: String,
+          email: String,
+          accountHolder: String,
+        },
+      ],
+      banks: [
+        {
+          accountHolder: String,
+          bankAccount: String,
+          accountID: String,
+          accountCBU: String,
+          accountAlias: String,
+        },
+      ],
+    },
   },
 
   // Vet
@@ -89,6 +108,7 @@ const UserSchema: Schema = new Schema({
     hasPets: Boolean,
     otherPets: Number,
     experience: Boolean,
+    printer: Boolean,
     hasTransportBox: Boolean,
     instagram: String,
     twitter: String,
