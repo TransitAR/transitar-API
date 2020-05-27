@@ -1,5 +1,32 @@
 import { Document } from "mongoose";
 
+export interface IDonations {
+  owner: string;
+  email: string;
+  hasBank: boolean;
+  bank: {
+    owner: string;
+    bankName: string;
+    accountId: string;
+    accountCBU: string;
+    accountAlias: string;
+  };
+  hasMercadopago: boolean;
+  mercadopago: {
+    links: [
+      {
+        amount: number;
+        description: string;
+        url: string;
+      }
+    ];
+  };
+  hasPaypal: boolean;
+  paypal: {
+    link: string;
+  };
+}
+
 export interface IUser extends Document {
   id: string;
   email: string; // "user1@foo.com";
@@ -33,6 +60,7 @@ export interface IUser extends Document {
     instagram: string;
     twitter: string;
     facebook: string;
+    donations: IDonations;
   };
 
   // Vet
@@ -45,6 +73,7 @@ export interface IUser extends Document {
     instagram: string;
     twitter: string;
     facebook: string;
+    donations: IDonations;
   };
 
   // Person

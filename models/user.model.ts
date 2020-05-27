@@ -1,6 +1,32 @@
 import { model, Schema } from "mongoose";
-import { IUser } from "./interfaces/user.interface";
-// import { geocoder } from "../utils/geocoder";
+import { IUser, IDonations } from "./interfaces/user.interface";
+
+const DonationsSchema: Schema = new Schema({
+  owner: String,
+  email: String,
+  hasBank: Boolean,
+  bank: {
+    owner: String,
+    bankName: String,
+    accountId: String,
+    accountCBU: String,
+    accountAlias: String,
+  },
+  hasMercadopago: Boolean,
+  mercadopago: {
+    links: [
+      {
+        amount: Number,
+        description: String,
+        url: String,
+      },
+    ],
+  },
+  hasPaypal: Boolean,
+  paypal: {
+    link: String,
+  },
+});
 
 const UserSchema: Schema = new Schema({
   id: {
@@ -55,25 +81,7 @@ const UserSchema: Schema = new Schema({
     instagram: String,
     twitter: String,
     facebook: String,
-    donations: {
-      mercadopago: [
-        {
-          link: String,
-          amount: String,
-          email: String,
-          accountHolder: String,
-        },
-      ],
-      banks: [
-        {
-          accountHolder: String,
-          bankAccount: String,
-          accountID: String,
-          accountCBU: String,
-          accountAlias: String,
-        },
-      ],
-    },
+    donations: DonationsSchema,
   },
 
   // Vet
@@ -86,6 +94,7 @@ const UserSchema: Schema = new Schema({
     instagram: String,
     twitter: String,
     facebook: String,
+    donations: DonationsSchema,
   },
 
   // Person
