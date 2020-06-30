@@ -4,7 +4,7 @@
   "author": "Julieta Flux & Guillermo Maiolo",
   "license": "ISC",
   "dependencies": {
-    "express-jwt": "^5.3.1",
+    "express-jwt": "^6.0.0",
     "jwks-rsa": "^1.7.0",
     "micro-cors": "^0.1.1",
     "mongoose": "^5.8.11",
